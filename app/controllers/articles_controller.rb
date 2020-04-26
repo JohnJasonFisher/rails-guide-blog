@@ -9,6 +9,10 @@ class ArticlesController < ApplicationController
         end
     end
 
+    def show
+        @article = Article.find_by!(id: params[:id])
+    end
+
     private def article_params
         params.require(:article).permit(:title, :text)
     end
