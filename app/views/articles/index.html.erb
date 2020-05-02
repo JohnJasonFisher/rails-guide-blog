@@ -1,17 +1,30 @@
 <h1>All Articles</h1>
 
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th></th>
-  </tr>
- 
-  <% @articles.each do |article| %>
     <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
+        <th>Title</th>
+        <th>Text</th>
+        <th colspan="2"></th>
     </tr>
-  <% end %>
+
+    <% @articles.each do |article| %>
+        <tr>
+            <td><%= article.title %></td>
+            <td><%= article.text %></td>
+            <td><%= link_to 'Show', article_path(article) %></td>
+            <td><%= link_to 'Edit', edit_article_path(article) %></td>
+        </tr>
+    <% end %>
 </table>
+
+<br>
+<%= link_to  'Create a new Article', new_article_path %>
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+    td {
+        padding: 5px;
+    }
+</style>
