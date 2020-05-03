@@ -8,7 +8,6 @@ new_articles = Article.create(
     ]
 )
 
-new_articles.each{ |new_article|
-    new_article.comments.create({commenter: 'simpleton', body: 'This is a silly comment!'})
-
+new_articles.each_with_index{ |new_article, index|
+    new_article.comments.create({commenter: "simpleton #{index}", body: 'This is a  silly comment!'})
 }
