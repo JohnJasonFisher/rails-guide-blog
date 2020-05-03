@@ -1,7 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Comment.delete_all
+Article.delete_all
+new_articles = Article.create(
+    [
+        {title: 'Day 1', text: 'When the cats attack.'},
+        {title: 'Day 2', text: 'When the dogs attack.'},
+        {title: 'Day 3', text: 'When the hamsters attack.'}
+    ]
+)
+
+new_articles.each_with_index{ |new_article, index|
+    new_article.comments.create({commenter: "simpleton #{index}", body: 'This is a  silly comment!'})
+}
